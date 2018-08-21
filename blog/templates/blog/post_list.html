@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Wei's web</title>
+    </head>
+    <body>
+        <div>
+            <h1><a href="/">Wei's home page</a></h1>
+        </div>
+
+        <div>
+            <p>published: 08.20.2018, 12:14</p>
+            <h2><a href="">My first post</a></h2>
+            <p>Joyce is funny</p>
+        </div>
+
+<button onclick="myFunction()">Click me</button>
+
+<p id="demoRandom"> </p>
+
+<script>
+function myFunction() {
+    var delta = new Date().getTime() - localStorage.getItem("startTime");
+    document.getElementById("demoRandom").innerHTML = "Your reaction time: " + delta + "ms";
+}
+</script>
+
+
+
+<p id="demoTimer"> </p>
+
+<script>
+var randomTimeMs = Math.random() * 8 * 1000;
+// Set the date we're counting down to
+var countDownDate = new Date().getTime() + randomTimeMs;
+localStorage.setItem("startTime", 0);
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+    
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Output the result in an element with id="demo"
+ //   document.getElementById("demoTimer").innerHTML = seconds + "s ";
+    
+    // If the count down is over, write some text 
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demoTimer").innerHTML = "START";
+	localStorage.setItem("startTime", now);
+    }
+}, 1000);
+</script>
+
+
+ 
+    </body>
+</html>
